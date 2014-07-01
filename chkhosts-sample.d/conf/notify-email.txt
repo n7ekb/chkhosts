@@ -1,0 +1,8 @@
+# 
+# This file provides a list of e-mail addresses to
+# send notification of host status changes to.
+#
+# Lines starting with a '#' character are ignored.
+#
+yournamehere@gmail.com
+somebodyelse@gmail.com

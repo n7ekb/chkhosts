@@ -1,0 +1,17 @@
+# This file provides the hostnames the 
+# chkhost.sh script will check status on.
+# 
+# Status is checked by pinging the specified
+# hostname, so be sure the name resolves
+# correctly on the system running chkhost.sh.
+#
+# Lines starting with a '#' character are ignored.
+#
+# 
+host1.sample.org
+host2.sample.org
+#
+# lab systems 
+test1.lab.sample.org
+test2.lab.sample.org
+test3.lab.sample.org
