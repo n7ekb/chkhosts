@@ -17,6 +17,8 @@ tarball:
 	sed -i 's/MY_VERSION_STRING/$(VERSION_STRING)/g' install.hdr
 	mkdir -p $(BUILDDIR)
 	cp -r ../chkhosts-sample.d/ $(BUILDDIR)/
+	( cd $(BUILDDIR)/chkhosts-sample.d/conf; \
+	sed -i 's/MY_VERSION_STRING/$(VERSION_STRING)/g' gen-webstat.sh; ) \
 	cp ../chkhosts.sh $(BUILDDIR)/
 	( cd $(BUILDDIR); \
 	sed -i 's/MY_VERSION_STRING/$(VERSION_STRING)/g' chkhosts.sh; \
