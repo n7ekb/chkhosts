@@ -9,7 +9,10 @@
 # Configure which E-mail client is to be used for sending e-mail/SMS alerts
 EMAIL_CLIENT=mutt
 
-#Check for required parameter and grab our working directory
+# Announce ourselves.
+echo "Check Hosts MY_VERSION_STRING"
+
+# Check for required parameter and grab our working directory
 if [[ "$#" -ne "1" ]]; then
         echo ""
         echo "ERROR:  Must specify working directory."
@@ -27,11 +30,6 @@ UPHOSTSTATUSDIR=$WORKDIR/status-up
 DOWNHOSTSTATUSDIR=$WORKDIR/status-down
 CHKHOSTLOGDIR=$WORKDIR/log
 CHKHOSTLOG=$CHKHOSTLOGDIR/chkhosts.log
-
-# ensure directory hierarchy exists
-mkdir -p $CHKHOSTLOGDIR >/dev/null 2>&1
-mkdir -p $UPHOSTSTATUSDIR >/dev/null 2>&1
-mkdir -p $DOWNHOSTSTATUSDIR >/dev/null 2>&1
 
 
 # our logging function

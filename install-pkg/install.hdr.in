@@ -1,0 +1,69 @@
+#!/bin/bash
+#
+# Single-file, self-extracting installation package.
+#
+REVISION="MY_VERSION_STRING"
+PKG_NAME="Check Hosts $REVISION"
+TAR_OPTIONS="xpf"
+ZCAT_OPTIONS=""
+
+echo "${PKG_NAME}"
+echo ' '
+
+# make sure we have all the script-required bits in place
+echo -n 'Checking for dependencies...'
+if ! which awk >/dev/null 2>&1; then
+   echo
+   echo "awk command not found!  Exiting."; exit 1
+fi
+if ! which tar >/dev/null 2>&1; then
+   echo
+   echo "tar command not found!  Exiting."; exit 1
+fi
+if ! which tail >/dev/null 2>&1; then
+   echo
+   echo "tail command not found!  Exiting."; exit 1
+fi
+if ! which zcat >/dev/null 2>&1; then
+   echo
+   echo "zcat command not found!  Exiting."; exit 1
+fi
+echo '  Okay! So far so good!'
+
+# Must specify target directory for chkhosts.sh script
+if [[ "$#" -ne "1" ]]; then 
+	echo ""
+	echo "ERROR:  Must specify target directory for executable script."
+	echo ""
+	echo "   usage:  $0 target_dir_for_executable"
+	echo ""
+	exit 2
+else
+	TARGETBINDIR=$1
+	# sanity check - is specified directory writeable?
+	if [[ -d "$TARGETBINDIR" ]]; then
+		echo "Installing chkhosts.sh to $TARGETBINDIR."
+		echo "Installing chkhosts-sample.d to current directory."
+	else
+		echo "$TARGETBINDIR not a directory!  Aborting."
+		exit 255
+	fi
+fi
+
+# Now calculate the length of script (portion to skip) and
+# do the self-extraction magic...
+echo "Unpacking files..."
+SKIP=`awk '/^__ARCHIVE_FOLLOWS__/ { print NR + 1; exit 0; }' $0`
+tail -n +$SKIP $0 | zcat ${ZCAT_OPTIONS} | tar ${TAR_OPTIONS} -
+
+# Do any extra installation steps here...
+cp chkhosts.sh $TARGETBINDIR
+chmod 755 $TARGETBINDIR/chkhosts.sh
+rm -f chkhosts.sh
+
+# All done - vanish
+echo 'Installation complete! :-)'
+rm -f $0
+exit 0
+
+__ARCHIVE_FOLLOWS__
