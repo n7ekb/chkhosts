@@ -61,9 +61,8 @@ cp chkhosts.sh $TARGETBINDIR
 chmod 755 $TARGETBINDIR/chkhosts.sh
 rm -f chkhosts.sh
 
-# All done - vanish
+# All done - say good-bye
 echo 'Installation complete! :-)'
-rm -f $0
 exit 0
 
 __ARCHIVE_FOLLOWS__
