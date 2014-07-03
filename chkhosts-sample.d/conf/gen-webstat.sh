@@ -5,17 +5,6 @@
 #
 # usage: gen-webstat.sh  chkhosts_directory
 
-
-# Variables to customize the output page
-_CHKHOSTS_TITLE_="Chkhosts System Status"
-_CHKHOSTS_COMMENTFORM_TITLE_="Chkhosts System Comment Update"
-_CHKHOSTS_DESCFORM_TITLE_="Chkhosts System Description Update"
-_CHKHOSTS_HOSTNAME_="chkhost.somwhere.com"
-_CHKHOSTS_POLL_INTERVAL_="5 minute"
-_CHKHOSTS_CONTACTNAME_="John Doe"
-_CHKHOSTS_CONTACTEMAIL_="john.doe@somewhere.com"
-_CHKHOSTS_TABLE_COLS_="3"
-
 # Announce ourselves.
 echo "Gen-webstat.sh MY_VERSION_STRING"
 
@@ -27,6 +16,17 @@ if [[ "$#" -ne "1" ]]; then
         exit 1
 else
         WORKDIR=$1
+fi
+
+# source the webstat.conf file to set user-configurable variables
+if [[ -e "$WORKDIR/conf/webstat.conf" ]]; then
+	echo "Sourcing $WORKDIR/conf/webstat.conf..."
+	source $WORKDIR/conf/webstat.conf
+else
+        echo ""
+        echo "ERROR:  Cannot access $WORKDIR/conf/webstat.conf.  Aborting."
+        echo ""
+        exit 2
 fi
 
 # Now set our variables relative to the working directory
