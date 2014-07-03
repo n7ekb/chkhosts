@@ -10,6 +10,7 @@
 # 
 host1.sample.org
 host2.sample.org
+host3.sample.org
 #
 # lab systems 
 test1.lab.sample.org
