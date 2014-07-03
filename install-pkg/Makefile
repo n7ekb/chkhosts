@@ -3,6 +3,7 @@
 
 PACKAGEFILES:=../chkhosts.sh \
 	../chkhosts-sample.d/conf/gen-webstat.sh \
+	../chkhosts-sample.d/conf/webstat.conf \
 	../chkhosts-sample.d/conf/hostlist.txt \
 	../chkhosts-sample.d/conf/notify-email.txt \
 	../chkhosts-sample.d/conf/notify-sms.txt \
@@ -11,7 +12,7 @@ PACKAGEFILES:=../chkhosts.sh \
 	../chkhosts-sample.d/status-up/
 BUILDDIR=./build
 SHORT_SHA:=$(shell git rev-parse --short HEAD)
-VERSION_STRING?=v1.1.0 (git-$(SHORT_SHA))
+VERSION_STRING?=v1.2.0 (git-$(SHORT_SHA))
 
 tarball:	
 	cp install.hdr.in install.hdr 
