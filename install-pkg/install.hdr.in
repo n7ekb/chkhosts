@@ -30,10 +30,10 @@ if ! which zcat >/dev/null 2>&1; then
 fi
 echo '  Okay! So far so good!'
 
-# Must specify target directory for chkhosts.sh script
+# Must specify target directory for chkhosts.sh executable scripts
 if [[ "$#" -ne "1" ]]; then 
 	echo ""
-	echo "ERROR:  Must specify target directory for executable script."
+	echo "ERROR:  Must specify target directory for executable scripts."
 	echo ""
 	echo "   usage:  $0 target_dir_for_executable"
 	echo ""
@@ -43,6 +43,7 @@ else
 	# sanity check - is specified directory writeable?
 	if [[ -d "$TARGETBINDIR" ]]; then
 		echo "Installing chkhosts.sh to $TARGETBINDIR."
+		echo "Installing chkhosts-gen-webstat.sh to $TARGETBINDIR."
 		echo "Installing chkhosts-sample.d to current directory."
 	else
 		echo "$TARGETBINDIR not a directory!  Aborting."
@@ -60,6 +61,9 @@ tail -n +$SKIP $0 | zcat ${ZCAT_OPTIONS} | tar ${TAR_OPTIONS} -
 cp chkhosts.sh $TARGETBINDIR
 chmod 755 $TARGETBINDIR/chkhosts.sh
 rm -f chkhosts.sh
+cp chkhosts-gen-webstat.sh $TARGETBINDIR
+chmod 755 $TARGETBINDIR/chkhosts-gen-webstat.sh
+rm -f chkhosts-gen-webstat.sh
 
 # All done - say good-bye
 echo 'Installation complete! :-)'
