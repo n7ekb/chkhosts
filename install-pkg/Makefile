@@ -3,7 +3,8 @@
 
 PACKAGEFILES:=../scripts/chkhosts.sh \
 	../scripts/chkhosts-gen-webstat.sh \
-	../chkhosts-sample.d/conf/webstat.conf \
+	../chkhosts-sample.d/conf/chkhosts.conf \
+	../chkhosts-sample.d/conf/chkhosts-gen-webstat.conf \
 	../chkhosts-sample.d/conf/hostlist.txt \
 	../chkhosts-sample.d/conf/notify-email.txt \
 	../chkhosts-sample.d/conf/notify-sms.txt \
