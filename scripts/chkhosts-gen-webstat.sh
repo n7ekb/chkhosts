@@ -497,6 +497,10 @@ sed -i "s/_CHKHOSTS_CONTACTEMAIL_/${_CHKHOSTS_CONTACTEMAIL_}/g" $WEBPAGE
 mkdir -p $CHKHOSTLOGDIR
 touch $CHKHOSTLOG
 
+# make sure the status-up & status-down directories exist
+mkdir -p $UPHOSTSTATUSDIR
+mkdir -p $DOWNHOSTSTATUSDIR
+
 # all done!
 echo "All done."
 exit 0
