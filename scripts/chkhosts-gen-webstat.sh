@@ -425,16 +425,20 @@ echo '</table></p>' >>$WEBPAGE
 # insert the Log links section 
 cat >>$WEBPAGE << "LOG_SECTION"
 <p>
-The description (line 3) and comment (line 4) for each host in
+The description (line 2) and comment (line 3) for each host in
 the system status table above can be updated via the web. &nbsp;
 All changes are logged with the date and time the change was 
 made. &nbsp;
 Use these links to make updates or to review changes:
 <ul>
-	<li><a href="update-description.php"><b>Update Description</b></a> 
-	&nbsp;(<a href="description.log">Review Description Change Log</a>)</li>
-	<li><a href="update-comment.php"><b>Update Comment</b></a> 
-	&nbsp;(<a href="comment.log">Review Comment Change Log</a>)</li>
+	<li><a href="update-description.php">
+		<b>Update Description (line 2)</b></a> 
+		&nbsp;&nbsp;(<a href="description.log">
+		Review Description Change Log</a>)</li>
+	<li><a href="update-comment.php">
+		<b>Update Comment (line 3)</b></a> 
+		&nbsp;&nbsp;(<a href="comment.log">
+		Review Comment Change Log</a>)</li>
 </ul>
 </p>
 <p>
