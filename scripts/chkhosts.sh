@@ -6,8 +6,7 @@
 #
 
 
-# Configure which E-mail client is to be used for sending e-mail/SMS alerts
-EMAIL_CLIENT=mutt
+
 
 # Announce ourselves.
 echo "Check Hosts MY_VERSION_STRING"
@@ -30,6 +29,18 @@ UPHOSTSTATUSDIR=$WORKDIR/status-up
 DOWNHOSTSTATUSDIR=$WORKDIR/status-down
 CHKHOSTLOGDIR=$WORKDIR/log
 CHKHOSTLOG=$CHKHOSTLOGDIR/chkhosts.log
+OUR_CONFIG_FILE=$WORKDIR/conf/chkhosts.conf
+
+# source OUR_CONFIG_FILE to set user-configurable variables
+if [[ -e "$OUR_CONFIG_FILE" ]]; then
+	echo "Sourcing $OUR_CONFIG_FILE..."
+	source $OUR_CONFIG_FILE
+else
+	echo ""
+	echo "ERROR: Cannot access $OUR_CONFIG_FILE. Aborting."
+	echo ""
+	exit 2
+fi
 
 
 # our logging function
