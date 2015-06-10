@@ -3,10 +3,12 @@
 # Script to generate host status php web page and
 # the description & comment update form pages.
 #
-# usage: gen-webstat.sh  chkhosts_directory
+# usage: chkhosts-gen-webstat.sh  chkhosts_directory
+
+OUR_CONFIG_FILE=chkhosts-gen-webstat.conf
 
 # Announce ourselves.
-echo "Gen-webstat.sh MY_VERSION_STRING"
+echo "Chkhosts-gen-webstat.sh MY_VERSION_STRING"
 
 # Check for required parameter and grab our working directory
 if [[ "$#" -ne "1" ]]; then
@@ -18,13 +20,13 @@ else
         WORKDIR=$1
 fi
 
-# source the webstat.conf file to set user-configurable variables
-if [[ -e "$WORKDIR/conf/webstat.conf" ]]; then
-	echo "Sourcing $WORKDIR/conf/webstat.conf..."
-	source $WORKDIR/conf/webstat.conf
+# source OUR_CONFIG_FILENAME to set user-configurable variables
+if [[ -e "$WORKDIR/conf/$OUR_CONFIG_FILE" ]]; then
+	echo "Sourcing $WORKDIR/conf/$OUR_CONFIG_FILE..."
+	source $WORKDIR/conf/$OUR_CONFIG_FILE
 else
         echo ""
-        echo "ERROR:  Cannot access $WORKDIR/conf/webstat.conf.  Aborting."
+        echo "ERROR:  Cannot access $WORKDIR/conf/$OUR_CONFIG_FILE.  Aborting."
         echo ""
         exit 2
 fi
