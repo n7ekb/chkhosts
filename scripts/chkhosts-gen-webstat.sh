@@ -127,7 +127,10 @@ for i in $( grep -v -e '^#' $HOSTLISTFILE ); do
 		>>$COMMENTFORM
 
 	# add initial comment to comment file for host
-	echo "no comment" >$WEBCOMMENTDIR/$SHORTNAME.txt
+	if [[ ! -e "$WEBCOMMENTDIR/$SHORTNAME.txt" ]]; then
+		echo "no comment" >$WEBCOMMENTDIR/$SHORTNAME.txt
+	fi
+
 done
 
 # set permissions to ensure web server can write the files
@@ -248,7 +251,9 @@ for i in $( grep -v -e '^#' $HOSTLISTFILE ); do
 	echo "		<option value=\"$SHORTNAME\">$SHORTNAME" >>$DESCFORM
 
 	# add initial description to description file for host
-	echo "description" >$WEBDESCRIPTIONDIR/$SHORTNAME.txt
+	if [[ ! -e "$WEBDESCRIPTIONDIR/$SHORTNAME.txt" ]]; then
+		echo "description" >$WEBDESCRIPTIONDIR/$SHORTNAME.txt
+	fi
 done
 
 # set permissions to ensure web server can write the files
