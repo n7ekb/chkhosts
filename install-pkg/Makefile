@@ -1,8 +1,8 @@
 # Makefile to build a self-extracting archive of
 # chkhosts.sh and supporting files.
 
-PACKAGEFILES:=../chkhosts.sh \
-	../chkhosts-gen-webstat.sh \
+PACKAGEFILES:=../scripts/chkhosts.sh \
+	../scripts/chkhosts-gen-webstat.sh \
 	../chkhosts-sample.d/conf/webstat.conf \
 	../chkhosts-sample.d/conf/hostlist.txt \
 	../chkhosts-sample.d/conf/notify-email.txt \
@@ -19,8 +19,8 @@ tarball:
 	sed -i 's/MY_VERSION_STRING/$(VERSION_STRING)/g' install.hdr
 	mkdir -p $(BUILDDIR)
 	cp -r ../chkhosts-sample.d/ $(BUILDDIR)/
-	cp ../chkhosts.sh $(BUILDDIR)/
-	cp ../chkhosts-gen-webstat.sh $(BUILDDIR)/
+	cp ../scripts/chkhosts.sh $(BUILDDIR)/
+	cp ../scripts/chkhosts-gen-webstat.sh $(BUILDDIR)/
 	( cd $(BUILDDIR); \
 	sed -i 's/MY_VERSION_STRING/$(VERSION_STRING)/g' chkhosts.sh; \
 	sed -i 's/MY_VERSION_STRING/$(VERSION_STRING)/g' \
