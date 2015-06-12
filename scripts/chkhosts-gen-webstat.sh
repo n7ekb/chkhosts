@@ -330,13 +330,12 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
                         echo '<td style="background-color:green; \
 				border-color: #000000; \
 				border-width: 1px 1px 1px 1px">';
-			if (file_exists("../system-info/$hostname.txt") {
+			if (file_exists("system-info/$hostname.txt") {
                         	echo "<b>";
 				echo "<a href=\"system-info/$hostname.txt\">";
 				echo "$hostname</a></b><br>";
 			} else {
-                        	echo "<b>";
-				echo "$hostname</b><br>";
+                        	echo "<b>$hostname</b><br>";
 			}
                         if (file_exists("system-description/$hostname.txt")) {
                                 $description=rtrim(file_get_contents(
@@ -363,13 +362,12 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
                         echo '<td style="background-color:red; \
 				border-color: #000000; \
 				border-width: 1px 1px 1px 1px">';
-			if (file_exists("../system-info/$hostname.txt") {
+			if (file_exists("system-info/$hostname.txt") {
                         	echo "<b>";
 				echo "<a href=\"system-info/$hostname.txt\">";
 				echo "$hostname</a></b><br>";
 			} else {
-                        	echo "<b>";
-				echo "$hostname</b><br>";
+                        	echo "<b>$hostname</b><br>";
 			}
                         if (file_exists("system-description/$hostname.txt")) {
                                 $description=rtrim(file_get_contents(
