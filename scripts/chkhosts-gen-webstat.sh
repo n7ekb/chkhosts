@@ -331,11 +331,11 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
 				border-color: #000000; \
 				border-width: 1px 1px 1px 1px">';
 			if (file_exists("../system-info/$hostname.txt") {
-                        	echo "<b>"
-				echo "<a href=\"system-info/$hostname.txt\">"
+                        	echo "<b>";
+				echo "<a href=\"system-info/$hostname.txt\">";
 				echo "$hostname</a></b><br>";
 			} else {
-                        	echo "<b>"
+                        	echo "<b>";
 				echo "$hostname</b><br>";
 			}
                         if (file_exists("system-description/$hostname.txt")) {
@@ -364,11 +364,11 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
 				border-color: #000000; \
 				border-width: 1px 1px 1px 1px">';
 			if (file_exists("../system-info/$hostname.txt") {
-                        	echo "<b>"
-				echo "<a href=\"system-info/$hostname.txt\">"
+                        	echo "<b>";
+				echo "<a href=\"system-info/$hostname.txt\">";
 				echo "$hostname</a></b><br>";
 			} else {
-                        	echo "<b>"
+                        	echo "<b>";
 				echo "$hostname</b><br>";
 			}
                         if (file_exists("system-description/$hostname.txt")) {
