@@ -42,6 +42,8 @@ CHKHOSTLOG=$CHKHOSTLOGDIR/chkhosts.log
 WEBSTATDIR=$WORKDIR/webstat
 WEBDESCRIPTIONDIR=$WEBSTATDIR/system-description
 WEBCOMMENTDIR=$WEBSTATDIR/system-comment
+WEBSYSTEMINFODIR=$WEBSTATDIR/system-info
+WEBSYSTEMFWINFODIR=$WEBSTATDIR/system-fwinfo
 WEBPAGE=$WEBSTATDIR/status.php
 COMMENTFORM=$WEBSTATDIR/update-comment.php
 DESCFORM=$WEBSTATDIR/update-description.php
@@ -522,6 +524,10 @@ touch $CHKHOSTLOG
 # make sure the status-up & status-down directories exist
 mkdir -p $UPHOSTSTATUSDIR
 mkdir -p $DOWNHOSTSTATUSDIR
+
+# make sure the system-info & system-fwinfo directories exist
+mkdir -p $WEBSYSTEMINFODIR
+mkdir -p $WEBSYSTEMFWINFODIR
 
 # all done!
 echo "All done."
