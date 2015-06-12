@@ -332,7 +332,7 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
                         echo '<td style="background-color:green; \
 				border-color: #000000; \
 				border-width: 1px 1px 1px 1px">';
-			if (file_exists("system-info/$hostname.txt") {
+			if (file_exists("system-info/$hostname.txt")) {
                         	echo "<b>";
 				echo "<a href=\"system-info/$hostname.txt\">";
 				echo "$hostname</a></b><br>";
@@ -364,7 +364,7 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
                         echo '<td style="background-color:red; \
 				border-color: #000000; \
 				border-width: 1px 1px 1px 1px">';
-			if (file_exists("system-info/$hostname.txt") {
+			if (file_exists("system-info/$hostname.txt")) {
                         	echo "<b>";
 				echo "<a href=\"system-info/$hostname.txt\">";
 				echo "$hostname</a></b><br>";
