@@ -330,8 +330,14 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
                         echo '<td style="background-color:green; \
 				border-color: #000000; \
 				border-width: 1px 1px 1px 1px">';
-                        echo "<b><a href=\"https://$pingname\">$hostname
-				</a></b><br>";
+			if (file_exists("../system-info/$hostname.txt") {
+                        	echo "<b>"
+				echo "<a href=\"system-info/$hostname.txt\">"
+				echo "$hostname</a></b><br>";
+			} else {
+                        	echo "<b>"
+				echo "$hostname</b><br>";
+			}
                         if (file_exists("system-description/$hostname.txt")) {
                                 $description=rtrim(file_get_contents(
 					"system-description/$hostname.txt"));
@@ -342,6 +348,12 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
                                 $comment=rtrim(file_get_contents(
 					"system-comment/$hostname.txt"));
                                 echo $comment;
+                                echo "<br>";
+                        }
+                        if (file_exists("system-fwinfo/$hostname.txt")) {
+                                $fwinfo=rtrim(file_get_contents(
+					"system-fwinfo/$hostname.txt"));
+                                echo $fwinfo;
                                 echo "<br>";
                         }
                         echo strftime("%Y-%m-%d at %H:%M %Z",
@@ -351,8 +363,14 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
                         echo '<td style="background-color:red; \
 				border-color: #000000; \
 				border-width: 1px 1px 1px 1px">';
-                        echo "<b><a href=\"ssh://$pingname\">$hostname
-				</a></b><br>";
+			if (file_exists("../system-info/$hostname.txt") {
+                        	echo "<b>"
+				echo "<a href=\"system-info/$hostname.txt\">"
+				echo "$hostname</a></b><br>";
+			} else {
+                        	echo "<b>"
+				echo "$hostname</b><br>";
+			}
                         if (file_exists("system-description/$hostname.txt")) {
                                 $description=rtrim(file_get_contents(
 					"system-description/$hostname.txt"));
@@ -363,6 +381,12 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
                                 $comment=rtrim(file_get_contents(
 					"system-comment/$hostname.txt"));
                                 echo $comment;
+                                echo "<br>";
+                        }
+                        if (file_exists("system-fwinfo/$hostname.txt")) {
+                                $fwinfo=rtrim(file_get_contents(
+					"system-fwinfo/$hostname.txt"));
+                                echo $fwinfo;
                                 echo "<br>";
                         }
                         if (file_exists("../status-down/$pingname")) {
@@ -496,6 +520,10 @@ sed -i "s/_CHKHOSTS_CONTACTEMAIL_/${_CHKHOSTS_CONTACTEMAIL_}/g" $WEBPAGE
 # ensure an empty status change log exists (for new installation)
 mkdir -p $CHKHOSTLOGDIR
 touch $CHKHOSTLOG
+
+# make sure the status-up & status-down directories exist
+mkdir -p $UPHOSTSTATUSDIR
+mkdir -p $DOWNHOSTSTATUSDIR
 
 # all done!
 echo "All done."
