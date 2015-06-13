@@ -44,6 +44,7 @@ WEBDESCRIPTIONDIR=$WEBSTATDIR/system-description
 WEBCOMMENTDIR=$WEBSTATDIR/system-comment
 WEBSYSTEMINFODIR=$WEBSTATDIR/system-info
 WEBSYSTEMFWINFODIR=$WEBSTATDIR/system-fwinfo
+WEBSYSTEMOFFLINEDIR=$WEBSTATDIR/system-offline
 WEBPAGE=$WEBSTATDIR/status.php
 COMMENTFORM=$WEBSTATDIR/update-comment.php
 DESCFORM=$WEBSTATDIR/update-description.php
@@ -361,9 +362,15 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
                                 filemtime("../status-up/$pingname"));
                         echo '</td>';
                 } else {
-                        echo '<td style="background-color:red; \
-				border-color: #000000; \
-				border-width: 1px 1px 1px 1px">';
+			if (file_exists("system-offline/$hostname.txt")) {
+                        	echo '<td style="background-color:white; \
+					border-color: #FFFFFF; \
+					border-width: 1px 1px 1px 1px">';
+			} else {
+                        	echo '<td style="background-color:red; \
+					border-color: #000000; \
+					border-width: 1px 1px 1px 1px">';
+			}
 			if (file_exists("system-info/$hostname.txt")) {
                         	echo "<b>";
 				echo "<a href=\"system-info/$hostname.txt\">";
@@ -525,9 +532,10 @@ touch $CHKHOSTLOG
 mkdir -p $UPHOSTSTATUSDIR
 mkdir -p $DOWNHOSTSTATUSDIR
 
-# make sure the system-info & system-fwinfo directories exist
+# make sure the system-info, system-fwinfo, and system-offline dirs exist
 mkdir -p $WEBSYSTEMINFODIR
 mkdir -p $WEBSYSTEMFWINFODIR
+mkdir -p $WEBSYSTEMOFFLINEDIR
 
 # all done!
 echo "All done."
