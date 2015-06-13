@@ -45,6 +45,7 @@ WEBCOMMENTDIR=$WEBSTATDIR/system-comment
 WEBSYSTEMINFODIR=$WEBSTATDIR/system-info
 WEBSYSTEMFWINFODIR=$WEBSTATDIR/system-fwinfo
 WEBSYSTEMOFFLINEDIR=$WEBSTATDIR/system-offline
+WEBSYSTEMGITINFODIR=$WEBSTATDIR/system-gitinfo
 WEBPAGE=$WEBSTATDIR/status.php
 COMMENTFORM=$WEBSTATDIR/update-comment.php
 DESCFORM=$WEBSTATDIR/update-description.php
@@ -352,6 +353,12 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
                                 echo $comment;
                                 echo "<br>";
                         }
+                        if (file_exists("system-gitinfo/$hostname.txt")) {
+                                $gitinfo=rtrim(file_get_contents(
+					"system-gitinfo/$hostname.txt"));
+                                echo $gitinfo;
+                                echo "<br>";
+                        }
                         if (file_exists("system-fwinfo/$hostname.txt")) {
                                 $fwinfo=rtrim(file_get_contents(
 					"system-fwinfo/$hostname.txt"));
@@ -388,6 +395,12 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
                                 $comment=rtrim(file_get_contents(
 					"system-comment/$hostname.txt"));
                                 echo $comment;
+                                echo "<br>";
+                        }
+                        if (file_exists("system-gitinfo/$hostname.txt")) {
+                                $gitinfo=rtrim(file_get_contents(
+					"system-gitinfo/$hostname.txt"));
+                                echo $gitinfo;
                                 echo "<br>";
                         }
                         if (file_exists("system-fwinfo/$hostname.txt")) {
@@ -532,10 +545,11 @@ touch $CHKHOSTLOG
 mkdir -p $UPHOSTSTATUSDIR
 mkdir -p $DOWNHOSTSTATUSDIR
 
-# make sure the system-info, system-fwinfo, and system-offline dirs exist
+# make sure the system-* dirs exist
 mkdir -p $WEBSYSTEMINFODIR
 mkdir -p $WEBSYSTEMFWINFODIR
 mkdir -p $WEBSYSTEMOFFLINEDIR
+mkdir -p $WEBSYSTEMGITINFODIR
 
 # all done!
 echo "All done."
