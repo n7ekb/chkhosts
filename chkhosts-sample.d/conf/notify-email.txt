@@ -4,5 +4,5 @@
 #
 # Lines starting with a '#' character are ignored.
 #
-yournamehere@gmail.com
-somebodyelse@gmail.com
+#yournamehere@gmail.com
+#somebodyelse@someplace.com
