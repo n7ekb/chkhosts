@@ -45,6 +45,8 @@ WEBCOMMENTDIR=$WEBSTATDIR/system-comment
 WEBSYSTEMINFODIR=$WEBSTATDIR/system-info
 WEBSYSTEMFWINFODIR=$WEBSTATDIR/system-fwinfo
 WEBSYSTEMOFFLINEDIR=$WEBSTATDIR/system-offline
+WEBSYSTEMMEMINFODIR=$WEBSTATDIR/system-meminfo
+WEBSYSTEMNUMAINFODIR=$WEBSTATDIR/system-numainfo
 WEBPAGE=$WEBSTATDIR/status.php
 COMMENTFORM=$WEBSTATDIR/update-comment.php
 DESCFORM=$WEBSTATDIR/update-description.php
@@ -352,6 +354,18 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
                                 echo $comment;
                                 echo "<br>";
                         }
+                        if (file_exists("system-meminfo/$hostname.txt")) {
+                                $meminfo=rtrim(file_get_contents(
+					"system-meminfo/$hostname.txt"));
+                                echo $meminfo;
+                                echo "<br>";
+                        }
+                        if (file_exists("system-numainfo/$hostname.txt")) {
+                                $numainfo=rtrim(file_get_contents(
+					"system-numainfo/$hostname.txt"));
+                                echo $numainfo;
+                                echo "<br>";
+                        }
                         if (file_exists("system-fwinfo/$hostname.txt")) {
                                 $fwinfo=rtrim(file_get_contents(
 					"system-fwinfo/$hostname.txt"));
@@ -388,6 +402,18 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
                                 $comment=rtrim(file_get_contents(
 					"system-comment/$hostname.txt"));
                                 echo $comment;
+                                echo "<br>";
+                        }
+                        if (file_exists("system-meminfo/$hostname.txt")) {
+                                $meminfo=rtrim(file_get_contents(
+					"system-meminfo/$hostname.txt"));
+                                echo $meminfo;
+                                echo "<br>";
+                        }
+                        if (file_exists("system-numainfo/$hostname.txt")) {
+                                $numainfo=rtrim(file_get_contents(
+					"system-numainfo/$hostname.txt"));
+                                echo $numainfo;
                                 echo "<br>";
                         }
                         if (file_exists("system-fwinfo/$hostname.txt")) {
@@ -532,10 +558,13 @@ touch $CHKHOSTLOG
 mkdir -p $UPHOSTSTATUSDIR
 mkdir -p $DOWNHOSTSTATUSDIR
 
-# make sure the system-info, system-fwinfo, and system-offline dirs exist
+# make sure the system-info, system-fwinfo, system-offline,
+# system-meminfo, and system-numainfo dirs exist
 mkdir -p $WEBSYSTEMINFODIR
 mkdir -p $WEBSYSTEMFWINFODIR
 mkdir -p $WEBSYSTEMOFFLINEDIR
+mkdir -p $WEBSYSTEMMEMINFODIR
+mkdir -p $WEBSYSTEMNUMAINFODIR
 
 # all done!
 echo "All done."
