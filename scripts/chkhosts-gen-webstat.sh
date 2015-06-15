@@ -43,10 +43,11 @@ WEBSTATDIR=$WORKDIR/webstat
 WEBDESCRIPTIONDIR=$WEBSTATDIR/system-description
 WEBCOMMENTDIR=$WEBSTATDIR/system-comment
 WEBSYSTEMINFODIR=$WEBSTATDIR/system-info
-WEBSYSTEMFWINFODIR=$WEBSTATDIR/system-fwinfo
-WEBSYSTEMOFFLINEDIR=$WEBSTATDIR/system-offline
-WEBSYSTEMMEMINFODIR=$WEBSTATDIR/system-meminfo
-WEBSYSTEMNUMAINFODIR=$WEBSTATDIR/system-numainfo
+WEBSYSTEMLINE4DIR=$WEBSTATDIR/system-line4
+WEBSYSTEMLINE5DIR=$WEBSTATDIR/system-line5
+WEBSYSTEMLINE6DIR=$WEBSTATDIR/system-line6
+WEBSYSTEMLINE7DIR=$WEBSTATDIR/system-line7
+WEBSYSTEMLINE8DIR=$WEBSTATDIR/system-line8
 WEBPAGE=$WEBSTATDIR/status.php
 COMMENTFORM=$WEBSTATDIR/update-comment.php
 DESCFORM=$WEBSTATDIR/update-description.php
@@ -354,22 +355,34 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
                                 echo $comment;
                                 echo "<br>";
                         }
-                        if (file_exists("system-meminfo/$hostname.txt")) {
-                                $meminfo=rtrim(file_get_contents(
-					"system-meminfo/$hostname.txt"));
-                                echo $meminfo;
+                        if (file_exists("system-line4/$hostname.txt")) {
+                                $line4info=rtrim(file_get_contents(
+					"system-line4/$hostname.txt"));
+                                echo $line4info;
                                 echo "<br>";
                         }
-                        if (file_exists("system-numainfo/$hostname.txt")) {
-                                $numainfo=rtrim(file_get_contents(
-					"system-numainfo/$hostname.txt"));
-                                echo $numainfo;
+                        if (file_exists("system-line5/$hostname.txt")) {
+                                $line5info=rtrim(file_get_contents(
+					"system-line5/$hostname.txt"));
+                                echo $line5info;
                                 echo "<br>";
                         }
-                        if (file_exists("system-fwinfo/$hostname.txt")) {
-                                $fwinfo=rtrim(file_get_contents(
-					"system-fwinfo/$hostname.txt"));
-                                echo $fwinfo;
+                        if (file_exists("system-line6/$hostname.txt")) {
+                                $line6info=rtrim(file_get_contents(
+					"system-line6/$hostname.txt"));
+                                echo $line6info;
+                                echo "<br>";
+                        }
+                        if (file_exists("system-line7/$hostname.txt")) {
+                                $line7info=rtrim(file_get_contents(
+					"system-line7/$hostname.txt"));
+                                echo $line7info;
+                                echo "<br>";
+                        }
+                        if (file_exists("system-line8/$hostname.txt")) {
+                                $line8info=rtrim(file_get_contents(
+					"system-line8/$hostname.txt"));
+                                echo $line8info;
                                 echo "<br>";
                         }
                         echo strftime("%Y-%m-%d at %H:%M %Z",
@@ -404,22 +417,34 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
                                 echo $comment;
                                 echo "<br>";
                         }
-                        if (file_exists("system-meminfo/$hostname.txt")) {
-                                $meminfo=rtrim(file_get_contents(
-					"system-meminfo/$hostname.txt"));
-                                echo $meminfo;
+                        if (file_exists("system-line4/$hostname.txt")) {
+                                $line4info=rtrim(file_get_contents(
+					"system-line4/$hostname.txt"));
+                                echo $line4info;
                                 echo "<br>";
                         }
-                        if (file_exists("system-numainfo/$hostname.txt")) {
-                                $numainfo=rtrim(file_get_contents(
-					"system-numainfo/$hostname.txt"));
-                                echo $numainfo;
+                        if (file_exists("system-line5/$hostname.txt")) {
+                                $line5info=rtrim(file_get_contents(
+					"system-line5/$hostname.txt"));
+                                echo $line5info;
                                 echo "<br>";
                         }
-                        if (file_exists("system-fwinfo/$hostname.txt")) {
-                                $fwinfo=rtrim(file_get_contents(
-					"system-fwinfo/$hostname.txt"));
-                                echo $fwinfo;
+                        if (file_exists("system-line6/$hostname.txt")) {
+                                $line6info=rtrim(file_get_contents(
+					"system-line6/$hostname.txt"));
+                                echo $line6info;
+                                echo "<br>";
+                        }
+                        if (file_exists("system-line7/$hostname.txt")) {
+                                $line7info=rtrim(file_get_contents(
+					"system-line7/$hostname.txt"));
+                                echo $line7info;
+                                echo "<br>";
+                        }
+                        if (file_exists("system-line8/$hostname.txt")) {
+                                $line8info=rtrim(file_get_contents(
+					"system-line8/$hostname.txt"));
+                                echo $line8info;
                                 echo "<br>";
                         }
                         if (file_exists("../status-down/$pingname")) {
@@ -558,13 +583,14 @@ touch $CHKHOSTLOG
 mkdir -p $UPHOSTSTATUSDIR
 mkdir -p $DOWNHOSTSTATUSDIR
 
-# make sure the system-info, system-fwinfo, system-offline,
-# system-meminfo, and system-numainfo dirs exist
+# make sure the system-info, and system-line[4-8] 
+# directories exist
 mkdir -p $WEBSYSTEMINFODIR
-mkdir -p $WEBSYSTEMFWINFODIR
-mkdir -p $WEBSYSTEMOFFLINEDIR
-mkdir -p $WEBSYSTEMMEMINFODIR
-mkdir -p $WEBSYSTEMNUMAINFODIR
+mkdir -p $WEBSYSTEMLINE4DIR
+mkdir -p $WEBSYSTEMLINE5DIR
+mkdir -p $WEBSYSTEMLINE6DIR
+mkdir -p $WEBSYSTEMLINE7DIR
+mkdir -p $WEBSYSTEMLINE8DIR
 
 # all done!
 echo "All done."
