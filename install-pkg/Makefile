@@ -13,7 +13,7 @@ PACKAGEFILES:=../scripts/chkhosts.sh \
 	../chkhosts-sample.d/status-up/
 BUILDDIR=./build
 GIT_DESCRIBE:=$(shell git describe --abbrev=7 --dirty --always --tags)
-VERSION_STRING?=v1.3.0 (git: $(GIT_DESCRIBE))
+VERSION_STRING?=v1.4.0 (git: $(GIT_DESCRIBE))
 
 tarball:	
 	cp install.hdr.in install.hdr 
