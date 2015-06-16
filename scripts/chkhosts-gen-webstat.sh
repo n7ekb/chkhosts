@@ -390,7 +390,7 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
                         echo '</td>';
                 } else {
 			if (file_exists("system-offline/$hostname.txt")) {
-                        	echo '<td style="background-color:white; \
+                        	echo '<td style="background-color:silver; \
 					border-color: #FFFFFF; \
 					border-width: 1px 1px 1px 1px">';
 			} else {
