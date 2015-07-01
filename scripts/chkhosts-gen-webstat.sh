@@ -42,6 +42,7 @@ CHKHOSTLOG=$CHKHOSTLOGDIR/chkhosts.log
 WEBSTATDIR=$WORKDIR/webstat
 WEBCOMMENTDIR=$WEBSTATDIR/system-comment
 WEBSYSTEMINFODIR=$WEBSTATDIR/system-info
+WEBSYSTEMCOLORDIR=$WEBSTATDIR/system-color
 WEBSYSTEMLINE3DIR=$WEBSTATDIR/system-line3
 WEBSYSTEMLINE4DIR=$WEBSTATDIR/system-line4
 WEBSYSTEMLINE5DIR=$WEBSTATDIR/system-line5
@@ -211,7 +212,7 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
         function showstatus($pingname,$hostname)
         {
                 if (file_exists("../status-up/$pingname")) {
-			$file = 'chkhosts-sysinfo-color.txt';
+			$file = "system-color/$hostname.txt";
 			if (file_exists($file)){
 				$contents = file_get_contents($file); 
                        		echo '<td style="background-color:$contents; \
@@ -468,6 +469,7 @@ mkdir -p $DOWNHOSTSTATUSDIR
 # make sure the system-info, and system-line[3-8] 
 # directories exist
 mkdir -p $WEBSYSTEMINFODIR
+mkdir -p $WEBSYSTEMCOLORDIR
 mkdir -p $WEBSYSTEMLINE3DIR
 mkdir -p $WEBSYSTEMLINE4DIR
 mkdir -p $WEBSYSTEMLINE5DIR
