@@ -212,16 +212,17 @@ cat >>$WEBPAGE << "PHP_FUNCTIONS_SECTION"
         function showstatus($pingname,$hostname)
         {
                 if (file_exists("../status-up/$pingname")) {
-                       	echo '<td style="background-color:';
 			$file = "system-color/$hostname.txt";
 			if (file_exists($file)){
 				$contents = file_get_contents($file); 
-				echo $contents;
+                       		echo "<td style=\"background-color:$contents; \
+				border-color: #000000; \
+				border-width: 1px 1px 1px 1px\">";
 			} else {
-				echo 'green'; 
+				echo '<td style="background-color:green; \
+				border-color: #00000; \
+				border-width: 1px 1px 1px 1px">';
 			}
-			echo 'border-color: #000000; \
-			border-width: 1px 1px 1px 1px">';
 			if (file_exists("system-info/$hostname.txt")) {
                         	echo "<b>";
 				echo "<a href=\"system-info/$hostname.txt\">";
